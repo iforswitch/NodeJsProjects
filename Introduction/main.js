@@ -1,15 +1,35 @@
 console.log("Hello from Electron 👋")
 const { app, BrowserWindow } = require('electron')
+const axios = require('axios');
+const { json } = require('express');
 
-const createWindow = () => {
-  const win = new BrowserWindow({
-    width: 400,
-    height: 400
-  })
+async function currentWeather(query) {
+    const access_key = 'hidden';
+    const options = {
+        method: 'GET'
+    }
 
-  win.loadFile('index.html')
+    try {
+        const response = await fetch('http://api.weatherstack.com/current?access_key=' + access_key + '&query=' + query, options);
+        const result = await response.json();
+        console.log(result);
+    }
+    catch (error){
+        console.error(error);
+    }
 }
 
-app.whenReady().then(() => {
-  createWindow()
-})
+currentWeather('Netherlands');
+
+// const createWindow = () => {
+//   const win = new BrowserWindow({
+//     width: 400,
+//     height: 400
+//   })
+
+//   win.loadFile('index.html')
+// }
+
+// app.whenReady().then(() => {
+//   createWindow()
+// })
