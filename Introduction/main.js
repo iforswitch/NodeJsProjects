@@ -22,7 +22,7 @@ async function currentWeather(query) {
         console.error(error);
     }
 }
-currentWeather('Netherlands');
+//currentWeather('Netherlands');
 
 //createServer
 // const server = http.createServer((req, res) => {
@@ -31,9 +31,9 @@ currentWeather('Netherlands');
 //     res.end('Hello World!');
 // });
 
-//appe.use(express.static(path.join(__dirname, 'public')));
+appe.use(express.static(path.join(__dirname, 'public')));
 
-appe.get('/', (req, res) => {
+appe.get('/data.json', (req, res) => {
     
     fs.readFile('data.json', (err, data) => {
         if (err){
@@ -41,63 +41,9 @@ appe.get('/', (req, res) => {
             return;
         }
         const jsonData = JSON.parse(data);
-        res.send(generateHTML(jsonData));
+        res.json(jsonData);
     });
 })
-
-function generateHTML(data) {
-    let tableRows = '';
-
-    console.log('People Data:', data.people);
-
-    data.people.forEach(person => {
-      tableRows += `
-        <tr>
-          <td>${person.name}</td>
-          <td>${person.age}</td>
-        </tr>
-      `;
-    });
-  
-    return `
-      <!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Names Table</title>
-        <style>
-          table {
-            width: 50%;
-            margin: 20px auto;
-            border-collapse: collapse;
-          }
-          th, td {
-            padding: 10px;
-            text-align: left;
-            border: 1px solid #ddd;
-          }
-          th {
-            background-color: #f2f2f2;
-          }
-        </style>
-      </head>
-      <body>
-        <h1>People's Names and Ages</h1>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Age</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${tableRows}
-          </tbody>
-        </table>
-      </body>
-      </html>`;
-}
 
 appe.listen(3000, 'localhost', () => {
     console.log('Server running at http://localhost:3000');

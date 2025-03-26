@@ -2,13 +2,17 @@
     "people": [
         {
             "name": "Alice", 
-            "age": 30
+            "age": 30,
+            "occupation": "Chemist"
         },
         {
-            "name": "Bob", "age": 25
+            "name": "Bob", "age": 25, 
+            "occupation": "Engineer"
         },
         {
-            "name": "Charlie", "age": 35
+            "name": "Charlie", 
+            "age": 35,
+            "occupation": "Ghost"
         }
     ]
 }

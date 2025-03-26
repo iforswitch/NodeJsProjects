@@ -1,0 +1,49 @@
+.Celltable, h1{
+    border-radius: 50px;
+}
+
+.Celltable{
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    background-color: burlywood;
+    width: fit-content;
+    padding: 10px;
+    border: 2px solid black;
+}
+
+
+h1{
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+table{
+    padding: 0;
+    border-spacing: 0;
+    border: 5px dashed black;
+    border-radius: 50px;
+}
+
+th, td{
+    border: 2px solid grey;
+}
+
+th{
+    background-color: yellow;
+    padding: 10px;
+}
+
+td{
+    text-align: center;
+    padding: 10px;
+    font-size: 30px;
+    background-color: lightgoldenrodyellow;
+}
+
+.peopleTable tbody tr:last-of-type td:first-of-type{
+    border-radius: 0 0 0 50px;
+}
+.peopleTable tbody tr:last-of-type td:last-of-type{
+    border-radius: 0 0 50px 0;
+}
